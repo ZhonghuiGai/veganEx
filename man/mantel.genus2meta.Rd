@@ -2,16 +2,28 @@
 % Please edit documentation in R/mantel.genus2meta.R
 \name{mantel.genus2meta}
 \alias{mantel.genus2meta}
-\title{Title}
+\title{Test the correlation of two matrix using the mantel function in the vegan package}
 \usage{
-mantel.genus2meta(genusdata, metadata, method = "pearson")
+mantel.genus2meta(genusdata, metadata, method = "pearson", perm = 999)
 }
 \arguments{
-\item{method}{}
+\item{genusdata}{the OTU table}
+
+\item{metadata}{the metadata}
+
+\item{method}{method to be used for correlation analysis, one of pearson and spearman, the default value is pearson}
+
+\item{perm}{the permutation value, default value is 999}
 }
 \value{
-
+a ggplot object
 }
 \description{
-Title
+Test the correlation of two matrix using the mantel function in the vegan package
+}
+\examples{
+mantel.genus2meta(iris[,1:2], iris[,3:4])
+}
+\author{
+Zhonghui Gai
 }
