@@ -39,7 +39,7 @@ adonis.pairwise <- function(x, factors,
 
     ad <- vegan::adonis(m ~ factors[factors %in% co[, i]], permutations = perm)
     pairs[i] <- paste0(co[1,i], ".vs.", co[2,i])
-    adonisR2[i] <- ad$aov.tab[1,5]
+    adonisR2[i] <- ad$aov.tab[1,5] |> round(3)
     p.value[i] <- ad$aov.tab[1,6]
   }
   p.adj <- p.adjust(p.value, method = p.adjust.m)
