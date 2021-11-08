@@ -2,6 +2,7 @@
 
 export(ado.ano.plot)
 export(adonis.pairwise)
+export(alpha)
 export(anosim.pairwise)
 export(effect.size.adonis)
 export(ggadonis.table)
