@@ -47,3 +47,34 @@ find_cell <- function(table, row, col, name="core-fg"){
   which(l$t==row & l$l==col & l$name==name)
 }
 
+#' Place the table in a separate figure.
+#'
+#' @param gtable the result of ggadonis.table function
+#'
+#' @return a ggplot2 object
+#' @export
+#'
+#' @author Zhonghui Gai
+#' @examples
+#' adonis.pairwise(iris[,1:4],iris$Species) |>
+#' ggadonis.table() |>
+#'   ggadonis.table_plot()
+ggadonis.table_plot <- function(gtable){
+  stopifnot(inherits(gtable, "gtable"))
+  p <- ggplot() +
+    theme_void() +
+    scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
+    scale_x_continuous(limits = c(0,1), expand = c(0, 0)) +
+    theme(plot.margin = unit(rep(0, 4), "lines"),
+          axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.background = element_blank(),
+          panel.border = element_blank()) +
+    annotation_custom(grob = gtable,
+                      xmin = 0, xmax = 1,
+                      ymin =0, ymax = 1)
+  return(p)
+}
+
+
